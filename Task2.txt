@@ -1,0 +1,10 @@
+1: SELECT Contact.name , Organization.name FROM Contact INNER JOIN Organization 
+	ON Contact.id = Organization.id
+	AND Organization.name = 'Cats'
+	AND Contacts.name LIKE 'A%' ;
+
+
+2: SELECT Organization.name, COUNT(Contacts.name) AS CountContacts 
+	FROM Organization LEFT JOIN Contacts
+	ON Organization.id = Contacts.idCompany 
+	GROUP BY Organization.name	; 
