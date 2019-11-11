@@ -46,7 +46,7 @@ public class Company {
 	public void addEmployee(Employee employee) throws Exception {
 		Double newEmployeesSalary = this.employeesSalary + employee.getSalary();
 		if (newEmployeesSalary > this.budget) {
-			throw new Exception();
+			throw new Exception(this.getName() + ": out of salary budget");
 		}
 		this.employeesSalary = newEmployeesSalary;
 		this.employees.add(employee);
