@@ -1,16 +1,19 @@
-package prj02;
+public abstract class Employee {
 
-public class Employee {
-
-	private Double retePerHour;
+	private Double ratePerHour;
 	private Integer workdays;
 
-	public double getRetePerHour() {
-		return retePerHour;
+	public Employee(Double ratePerHour, Integer workdays) {
+		this.ratePerHour = ratePerHour;
+		this.workdays = workdays;
 	}
 
-	public void setRetePerHour(Double retePerHour) {
-		this.retePerHour = retePerHour;
+	public Double getRatePerHour() {
+		return ratePerHour;
+	}
+
+	public void setRatePerHour(Double ratePerHour) {
+		this.ratePerHour = ratePerHour;
 	}
 
 	public Integer getWorkdays() {
@@ -22,6 +25,6 @@ public class Employee {
 	}
 
 	public Double getSalary() {
-		return retePerHour * workdays * 8;
+		return this.ratePerHour * this.workdays * 8;
 	}
 }

@@ -1,15 +1,19 @@
-package prj02;
-
 import java.util.ArrayList;
 
 public class Company {
 
 	private String name;
 	private Double budget;
-	private ArrayList<Employee> employees = new ArrayList<Employee>();
+	private ArrayList<Employee> employees = new ArrayList<>();
+	private Double employeesSalary = 0.00;
+	private static SalaryService salaryService;
+
+	public Company(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -17,7 +21,7 @@ public class Company {
 	}
 
 	public Double getBudget() {
-		return budget;
+		return this.budget;
 	}
 
 	public void setBudget(Double budget) {
@@ -25,15 +29,27 @@ public class Company {
 	}
 
 	public ArrayList<Employee> getEmployees() {
-		return employees;
+		return this.employees;
 	}
 
-	public void addEmployee(Employee em) {
-		employees.add(em);
+	public Double getEmployeesSalary() {
+		return employeesSalary;
 	}
 
 	public SalaryService getSalaryService() {
+		if (salaryService == null) {
+			salaryService = new SalaryService();
+		}
+		return salaryService;
+	}
 
+	public void addEmployee(Employee employee) throws Exception {
+		Double newEmployeesSalary = this.employeesSalary + employee.getSalary();
+		if (newEmployeesSalary > this.budget) {
+			throw new Exception();
+		}
+		this.employeesSalary = newEmployeesSalary;
+		this.employees.add(employee);
 	}
 
 }

@@ -1,7 +1,11 @@
-package prj02;
+public class SalaryService {
 
-public interface SalaryService {
+	public SalaryService() {
+		System.out.println("Service created");
+	}
 
-	public void pay(Company com);
+	public void pay(Company company) {
+		System.out.println("Salary paid. Total sum: " + company.getEmployeesSalary());
+	}
 
 }
